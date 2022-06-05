@@ -1,3 +1,4 @@
+from django.db.models import Avg
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -5,6 +6,7 @@ from django.utils.text import gettext_lazy as _
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 from account.models import Follower
+from song.serializers import CommentSerializer, FavoriteSerializer, LikeSerializer
 
 User = get_user_model()
 
@@ -131,5 +133,13 @@ class UserListViewSerializer(serializers.ModelSerializer):
     class Meta:
         model =User
         fields = ('id', 'email', 'last_name', 'first_name', 'is_author', 'date_joined' )
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        repr['likes'] = LikeSerializer(instance.likes, many=True).data
+        repr['rating'] = instance.ratings.aggregate(Avg('mark'))
+        repr['favorites'] = FavoriteSerializer(instance.favorites, many=True).data
+        repr['comments'] = CommentSerializer(instance.comments, many=True).data
+        return repr
 
 

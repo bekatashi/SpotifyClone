@@ -8,9 +8,7 @@ def send_confirmation_email(user):
     send_mail('Hello! please enter ur account', f'Please open the following link {full_link}, to activate it', 'forexample@gmail.com', [to_email, ], fail_silently=False)
 
 
-def send_reset_password(user):
-    code = user.activation_code
-    to_email = user.email
+def send_reset_password(code, to_email):
     send_mail(
         'Changing ur password',
         f'Ur code: {code}',

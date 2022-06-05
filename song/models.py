@@ -54,4 +54,4 @@ class Favorite(models.Model):
 class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='comments')
-    body = models.TextField()
+    body = models.TextField(blank=True, null=True)

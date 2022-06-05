@@ -7,6 +7,6 @@ router.register('songs', views.SongViewSet)
 router.register('genres', views.GenreViewSet)
 urlpatterns = [
     path('', include(router.urls)),
-    path('remove_comment', views.CommentDeleteView.as_view()),
-    path('add_comment', views.CommentCreateView.as_view())
+    path('remove_comment/', views.CommentDeleteView.as_view()),
+    path('add_comment/', views.CommentCreateView.as_view())
 ]

@@ -15,24 +15,25 @@ class SongSerializer(serializers.ModelSerializer):
         repr['likes'] = instance.likes.count()
         repr['rating'] = instance.ratings.aggregate(Avg('mark'))
         repr['favorited'] = instance.favorites.count()
-        repr['comments'] = instance.comments.all()
-        repr['chat'] = 'if you want to chat with others then click on the link: http://10.117.9.143:8080/'
+        repr['comments'] = CommentSerializer(instance.comments, many=True).data
+        repr['chat'] = 'if you want to chat with others then click on the link: http://192.168.8.185:8080/ '
         return repr
 
-# class LikeSerializer(serializers.ModelSerializer):
-#     user = serializers.ReadOnlyField(source='user.email')
 
-#     class Meta:
-#         model = models.Like
-#         fields = '__all__'
+class LikeSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.email')
+
+    class Meta:
+        model = models.Like
+        fields = '__all__'
 
 
-# class FavoriteSerializer(serializers.ModelSerializer):
-#     user = serializers.ReadOnlyField(source='user.email')
-#
-#     class Meta:
-#         model = models.Favorite
-#         fields = '__all__'
+class FavoriteSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.email')
+
+    class Meta:
+        model = models.Favorite
+        fields = '__all__'
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -41,20 +42,7 @@ class GenreSerializer(serializers.ModelSerializer):
         fields = '__all__'
 #
 #
-# class PlaySerializer(serializers.ModelSerializer):
-#     count = serializers.ReadOnlyField(source='count')
 #
-#     class Meta:
-#         model = models.SongPlays
-#         fields = '__all__'
-
-#
-# class SongDetailSerializer(serializers.ModelSerializer):
-#     performer = serializers.ReadOnlyField(source='performer.email')
-#
-#     class Meta:
-#         model = models.Song
-#         fields = '__all__'
 
 
 class CommentSerializer(serializers.ModelSerializer):

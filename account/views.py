@@ -21,7 +21,7 @@ class RegistrationAPIView(APIView):
             user = serializer.save()
             if user:
                 # send_confirmation_email(user)  # - just sending without parraleles
-                send_activation_code.delay(user)
+                send_activation_code.delay(user.email, user.activation_code)
             return Response('check ur email', status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -59,7 +59,7 @@ class ResetPasswordView(APIView):
             user = User.objects.get(email=serializer.data.get('email'))
             user.create_activation_code()
             user.save()
-            send_reset_pass.delay(user)
+            send_reset_pass.delay(user.activation_code, user.email)
             return Response('check ur email')
 
 

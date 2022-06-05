@@ -25,6 +25,7 @@ class SongViewSet(ModelViewSet):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_fields = ('genre', 'performer')
     search_fields = ('title',)
+    # permission_classes = (permissions.AllowAny,)
 
     def perform_create(self, serializer):
         serializer.save(performer=self.request.user)
@@ -33,7 +34,7 @@ class SongViewSet(ModelViewSet):
         if self.action in ['list', 'retrieve']:
             return [permissions.IsAuthenticated(), ]
         else:
-         return [IsSinger(), IsSelfSinger(), ]
+            return [IsSinger(), IsSelfSinger(), ]
 
     @action(['POST'], detail=True)
     def add_to_liked(self, request, pk):
@@ -125,8 +126,14 @@ class CommentDeleteView(generics.DestroyAPIView):
     serializer_class = serializers.CommentSerializer
     queryset = Comments.objects.all()
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class CommentCreateView(generics.CreateAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = serializers.CommentSerializer
     queryset = Comments.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

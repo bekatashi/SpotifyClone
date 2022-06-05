@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="613155ac-7005-4337-a601-23e8015db12c" name="Changes" comment="" />
+    <list default="true" id="613155ac-7005-4337-a601-23e8015db12c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/send_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/send_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/song/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/song/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/song/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/song/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/song/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/song/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/song/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/song/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
